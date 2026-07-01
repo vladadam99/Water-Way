@@ -6,33 +6,36 @@
       {% if collection.description != blank %}<p>{{ collection.description }}</p>{% endif %}
     </div>
   </div>
+
   {% if collection.products_count > 0 %}
-    <div class="ww-product-grid">
-      {% paginate collection.products by 24 %}
+    {% paginate collection.products by 24 %}
+      <div class="ww-product-grid">
         {% for product in collection.products %}
           <a class="ww-product-card" href="{{ product.url }}">
             <div class="ww-product-card__image">
               {% if product.featured_image %}
-                {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.featured_image.alt | default: product.title | escape }}
+                {% assign image_alt = product.featured_image.alt | default: product.title | escape %}
+                {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: image_alt }}
               {% else %}
-                Water Way
+                <span>Water Way</span>
               {% endif %}
             </div>
             <h3>{{ product.title }}</h3>
             <p class="ww-price">{{ product.price | money }}</p>
           </a>
         {% endfor %}
-        {% if paginate.pages > 1 %}
-          <nav aria-label="Pagination" style="margin-top:2rem;">
-            {{ paginate | default_pagination }}
-          </nav>
-        {% endif %}
-      {% endpaginate %}
-    </div>
+      </div>
+      {% if paginate.pages > 1 %}
+        <nav aria-label="Pagination" style="margin-top:2rem;">
+          {{ paginate | default_pagination }}
+        </nav>
+      {% endif %}
+    {% endpaginate %}
   {% else %}
     <div class="ww-empty">Products will appear here after this collection is populated.</div>
   {% endif %}
 </section>
+
 {% schema %}
 { "name": "Collection product grid", "settings": [] }
 {% endschema %}
