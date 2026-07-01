@@ -1,0 +1,13 @@
+<article class="ww-container ww-page">
+  <div class="ww-page__content">
+    <div class="ww-kicker">{{ blog.title }}</div>
+    <h1>{{ article.title }}</h1>
+    <p style="color:var(--ww-muted);">{{ article.published_at | date: '%d %B %Y' }}</p>
+    <div>{{ article.content }}</div>
+    <p style="margin-top:2rem;"><a class="ww-button ww-button--secondary" href="{{ blog.url }}">Back to guides</a></p>
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Main article", "settings": [] }
+{% endschema %}
