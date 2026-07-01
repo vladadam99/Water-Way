@@ -8,40 +8,20 @@
       <a href="/collections" class="ww-button ww-button--secondary">View all</a>
     </div>
     <div class="ww-grid ww-grid--3">
-      {% for block in section.blocks %}
-        <a class="ww-category-card" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
-          <span>{{ block.settings.icon }}</span>
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
-        </a>
-      {% endfor %}
+      <a class="ww-category-card" href="/collections/water-saving"><span>01</span><h3>Water Saving</h3><p>Lower everyday use.</p></a>
+      <a class="ww-category-card" href="/collections/water-filtration"><span>02</span><h3>Filtration</h3><p>Improve daily quality.</p></a>
+      <a class="ww-category-card" href="/collections/irrigation"><span>03</span><h3>Irrigation</h3><p>Support gardens and greenhouses.</p></a>
     </div>
   </div>
 </section>
+
 {% schema %}
 {
   "name": "Featured categories",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by water solution" },
-    { "type": "textarea", "id": "text", "label": "Text", "default": "Find the right products for saving water, filtering water, irrigating gardens, collecting rainwater and protecting property." }
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by category" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Browse practical Water Way categories." }
   ],
-  "blocks": [
-    { "type": "category", "name": "Category", "settings": [
-      { "type": "text", "id": "icon", "label": "Icon", "default": "💧" },
-      { "type": "text", "id": "title", "label": "Title", "default": "Water Saving" },
-      { "type": "textarea", "id": "text", "label": "Text", "default": "Reduce waste and lower everyday water use." },
-      { "type": "url", "id": "link", "label": "Link", "default": "/collections/water-saving" }
-    ]}
-  ],
-  "presets": [
-    { "name": "Featured categories", "blocks": [
-      { "type": "category", "settings": { "icon": "💧", "title": "Water Saving", "text": "Reduce waste and lower everyday water use.", "link": "/collections/water-saving" } },
-      { "type": "category", "settings": { "icon": "🚰", "title": "Water Filtration", "text": "Improve taste, clarity and everyday quality.", "link": "/collections/water-filtration" } },
-      { "type": "category", "settings": { "icon": "🌱", "title": "Irrigation", "text": "Water gardens, lawns and greenhouses efficiently.", "link": "/collections/irrigation" } },
-      { "type": "category", "settings": { "icon": "🌧️", "title": "Rainwater Harvesting", "text": "Collect, store and reuse rainwater.", "link": "/collections/rainwater-harvesting" } },
-      { "type": "category", "settings": { "icon": "🔧", "title": "Pumps & Accessories", "text": "Move, boost and manage water reliably.", "link": "/collections/water-pumps" } },
-      { "type": "category", "settings": { "icon": "🛡️", "title": "Leak Detection", "text": "Spot leaks early and protect your property.", "link": "/collections/leak-detection" } }
-    ]}
-  ]
+  "presets": [{ "name": "Featured categories" }]
 }
 {% endschema %}
