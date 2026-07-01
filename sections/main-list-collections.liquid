@@ -1,0 +1,31 @@
+<section class="ww-container ww-page">
+  <div class="ww-section__head">
+    <div>
+      <div class="ww-kicker">Water Way</div>
+      <h1>Shop by category</h1>
+      <p>Browse Water Way collections for water saving, filtration, irrigation, rainwater harvesting, pumps, leak detection and practical accessories.</p>
+    </div>
+  </div>
+
+  <div class="ww-grid ww-grid--3">
+    {% for collection in collections %}
+      {% unless collection.handle == 'frontpage' %}
+        <a class="ww-category-card" href="{{ collection.url }}">
+          <span>💧</span>
+          <h3>{{ collection.title }}</h3>
+          {% if collection.description != blank %}
+            <p>{{ collection.description | strip_html | truncate: 130 }}</p>
+          {% else %}
+            <p>Explore practical products and solutions from Water Way.</p>
+          {% endif %}
+        </a>
+      {% endunless %}
+    {% else %}
+      <div class="ww-empty">Collections will appear here after they are created.</div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "List collections", "settings": [] }
+{% endschema %}
