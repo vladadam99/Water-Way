@@ -1,7 +1,8 @@
 <section class="ww-container ww-product">
   <div class="ww-product__media">
     {% if product.featured_image %}
-      {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'eager', alt: product.featured_image.alt | default: product.title | escape }}
+      {% assign image_alt = product.featured_image.alt | default: product.title | escape %}
+      {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'eager', alt: image_alt }}
     {% else %}
       <strong>Water Way</strong>
     {% endif %}
@@ -27,6 +28,7 @@
     </div>
   </div>
 </section>
+
 {% schema %}
 { "name": "Main product", "settings": [] }
 {% endschema %}
