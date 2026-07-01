@@ -1,0 +1,22 @@
+<section class="ww-container ww-page">
+  <h1>Search</h1>
+  <form action="{{ routes.search_url }}" method="get" role="search">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search Water Way" style="padding:.85rem 1rem;border:1px solid var(--ww-border);border-radius:999px;min-width:280px;">
+    <button class="ww-button" type="submit">Search</button>
+  </form>
+  {% if search.performed %}
+    <div class="ww-product-grid" style="margin-top:2rem;">
+      {% for item in search.results %}
+        <a class="ww-product-card" href="{{ item.url }}">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.object_type | capitalize }}</p>
+        </a>
+      {% else %}
+        <div class="ww-empty">No results found.</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+{% schema %}
+{ "name": "Main search", "settings": [] }
+{% endschema %}

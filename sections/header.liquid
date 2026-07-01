@@ -1,0 +1,21 @@
+<header class="ww-header">
+  <div class="ww-container ww-header__inner">
+    <a class="ww-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
+      <span class="ww-logo__mark">💧</span>
+      <span>Water Way</span>
+    </a>
+    <nav class="ww-nav" aria-label="Main navigation">
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="/collections/water-saving">Water Saving</a>
+      <a href="/collections/water-filtration">Filtration</a>
+      <a href="/collections/irrigation">Irrigation</a>
+      <a href="/collections/rainwater-harvesting">Rainwater</a>
+      <a href="/collections/leak-detection">Leak Detection</a>
+      <a href="/pages/contact">Contact</a>
+      <a class="ww-button" href="/collections/all">Shop all</a>
+    </nav>
+  </div>
+</header>
+{% schema %}
+{ "name": "Header", "settings": [] }
+{% endschema %}

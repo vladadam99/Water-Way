@@ -1,0 +1,32 @@
+<section class="ww-container ww-product">
+  <div class="ww-product__media">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'eager', alt: product.featured_image.alt | default: product.title | escape }}
+    {% else %}
+      <strong>Water Way</strong>
+    {% endif %}
+  </div>
+  <div class="ww-product__info">
+    <div class="ww-kicker">{{ product.type | default: 'Water Way product' }}</div>
+    <h1>{{ product.title }}</h1>
+    <p class="ww-price">{{ product.selected_or_first_available_variant.price | money }}</p>
+    <div class="ww-product__description">{{ product.description }}</div>
+    {% form 'product', product %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <div class="ww-quantity">
+        <label for="Quantity-{{ section.id }}">Quantity</label>
+        <input id="Quantity-{{ section.id }}" type="number" name="quantity" value="1" min="1">
+      </div>
+      <button class="ww-button" type="submit" {% unless product.available %}disabled{% endunless %}>
+        {% if product.available %}Add to cart{% else %}Sold out{% endif %}
+      </button>
+    {% endform %}
+    <div class="ww-card" style="padding:1rem;margin-top:1.25rem;">
+      <strong>Need help choosing?</strong>
+      <p style="margin:.35rem 0 0;color:var(--ww-muted);">Contact Water Way for compatibility guidance before ordering filtration, pump or irrigation products.</p>
+    </div>
+  </div>
+</section>
+{% schema %}
+{ "name": "Main product", "settings": [] }
+{% endschema %}

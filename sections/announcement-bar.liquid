@@ -1,0 +1,12 @@
+<div class="ww-announcement">
+  {{ section.settings.text }}
+</div>
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "Water Way — smarter water solutions for every home, garden and business" }
+  ],
+  "presets": [{ "name": "Announcement bar" }]
+}
+{% endschema %}

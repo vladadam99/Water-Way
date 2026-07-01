@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "hero": {
+      "type": "water-way-hero"
+    },
+    "categories": {
+      "type": "featured-categories"
+    },
+    "trust": {
+      "type": "trust-bar"
+    },
+    "featured_products": {
+      "type": "featured-products"
+    },
+    "newsletter": {
+      "type": "newsletter"
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "trust",
+    "featured_products",
+    "newsletter"
+  ]
+}

@@ -1,0 +1,7 @@
+[environments.production]
+store = "epj3de-4y.myshopify.com"
+ignore = ["docs/*", "catalog/*", "scripts/*", ".github/*", "README.md", "AGENTS.md"]
+
+[environments.development]
+store = "epj3de-4y.myshopify.com"
+ignore = ["docs/*", "catalog/*", "scripts/*", ".github/*", "README.md", "AGENTS.md"]

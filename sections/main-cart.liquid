@@ -1,0 +1,26 @@
+<section class="ww-container ww-page">
+  <h1>Your cart</h1>
+  {% if cart.item_count > 0 %}
+    <form action="{{ routes.cart_url }}" method="post">
+      {% for item in cart.items %}
+        <div class="ww-card" style="padding:1rem;margin-bottom:1rem;display:flex;justify-content:space-between;gap:1rem;">
+          <div>
+            <strong>{{ item.product.title }}</strong><br>
+            <span>{{ item.variant.title }}</span><br>
+            <span>{{ item.final_line_price | money }}</span>
+          </div>
+          <input name="updates[]" value="{{ item.quantity }}" type="number" min="0" style="width:80px;">
+        </div>
+      {% endfor %}
+      <p><strong>Subtotal:</strong> {{ cart.total_price | money }}</p>
+      <button class="ww-button ww-button--secondary" type="submit" name="update">Update cart</button>
+      <button class="ww-button" type="submit" name="checkout">Checkout</button>
+    </form>
+  {% else %}
+    <div class="ww-empty">Your cart is currently empty.</div>
+    <p><a class="ww-button" href="/collections/all">Continue shopping</a></p>
+  {% endif %}
+</section>
+{% schema %}
+{ "name": "Main cart", "settings": [] }
+{% endschema %}
