@@ -1,22 +1,28 @@
 <section class="ww-section">
   <div class="ww-container">
+    {% assign featured_collection = section.settings.collection %}
     <div class="ww-section__head">
       <div>
         <h2>{{ section.settings.heading }}</h2>
         <p>{{ section.settings.text }}</p>
       </div>
-      <a href="{{ section.settings.collection.url | default: '/collections/all' }}" class="ww-button ww-button--secondary">Shop collection</a>
+      {% if featured_collection != blank %}
+        <a href="{{ featured_collection.url }}" class="ww-button ww-button--secondary">Shop collection</a>
+      {% else %}
+        <a href="/collections/all" class="ww-button ww-button--secondary">Shop collection</a>
+      {% endif %}
     </div>
-    {% assign collection = section.settings.collection %}
-    {% if collection != blank and collection.products_count > 0 %}
+
+    {% if featured_collection != blank and featured_collection.products_count > 0 %}
       <div class="ww-product-grid">
-        {% for product in collection.products limit: section.settings.limit %}
+        {% for product in featured_collection.products limit: section.settings.limit %}
           <a class="ww-product-card" href="{{ product.url }}">
             <div class="ww-product-card__image">
               {% if product.featured_image %}
-                {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.featured_image.alt | escape }}
+                {% assign image_alt = product.featured_image.alt | default: product.title | escape %}
+                {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: image_alt }}
               {% else %}
-                Water Way
+                <span>Water Way</span>
               {% endif %}
             </div>
             <h3>{{ product.title }}</h3>
@@ -29,6 +35,7 @@
     {% endif %}
   </div>
 </section>
+
 {% schema %}
 {
   "name": "Featured products",
